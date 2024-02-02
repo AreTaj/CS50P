@@ -1,25 +1,28 @@
-# Problem Set 2
+# Problem Set 5
 # Just setting up my twttr
 
-phrase = input("Input: ")
-vowels = ["a","e","i","o","u","A","E","I","O","U"]
-phrase_list = list(phrase)
+def main():
+    shorten(input("Input: "))
 
-for i in range(len(phrase_list)):
-    if phrase_list[i] in vowels:
-        phrase_list[i] = ""
+
+def shorten(word):
+    #word = input("Input: ")
+    vowels = ["a","e","i","o","u","A","E","I","O","U"]
+    word_list = list(word)
+
+    for i in range(len(word_list)):
+        if word_list[i] in vowels:
+           word_list[i] = ""
     
-new_phrase = ''.join(phrase_list)
-print(new_phrase)
-
-#phrase = list_phrase
+    new_word = ''.join(word_list)
+    print(new_word)
 
 
-#for char in phrase:
-#    if char in vowels:
-#        new_phrase = phrase.replace(vowels,"")
-#
-#print(new_phrase)
+if __name__ == "__main__":
+    main()
 
-#for vowels in phrase:
-#    print("test")
+
+
+
+
+

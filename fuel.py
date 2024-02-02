@@ -1,27 +1,35 @@
-# Problem Set 3
-# Fuel Gauge
+# Refueling
+# Problem Set 5
 
-while True:
-    num = input("Fraction: ")
-    index = num.find("/")
-    try:
-        x = int(num[:index])
-        # Takes slice of input string "num" at position specified by "index", then converts to int.
-        y = int(num[index+1:])
-        # Takes slice of input string "num" at position specified by ("index" + 1), then converts to int.
-        fraction = x / y
-        if x > y:
-            continue
-        break
-    except (ValueError, ZeroDivisionError):
-        continue
+def main():
+    fraction = input("Fraction: ")
+    percentage = convert(fraction)
+    output = gauge(percentage)
+    print(output)
 
-percentage = fraction * 100
-percentage = percentage.__round__()
+def convert(fraction):
+    while True:
+        try:
+            numerator, denominator = fraction.split("/")
+            new_n = int(numerator)
+            new_d = int(denominator)
+            f = new_n / new_d
+            if f <= 1:
+                p = int(f * 100)
+                return p
+            else:
+                fraction = input("Fraction: ")
+                pass
+        except (ValueError, ZeroDivisionError):
+            raise
 
-if fraction > 0.9:
-    print("F")
-elif fraction < 0.1:
-    print("E")
-else:
-    print(str(percentage) + '%')
+def gauge(percentage):   
+    if percentage >= 99:
+        return "F"
+    elif percentage <= 1:
+        return "E"
+    else:
+        return str(percentage) + '%'
+
+if __name__ == "__main__":
+    main()
